@@ -64,7 +64,18 @@
 
     <script src="/socket.io/socket.io.js"></script>
     <script>
-      const socket = io()
+      const room = {
+        id: `my-room-id`,
+        host: {
+          username: "skulbraz",
+        },
+      }
+
+      const socket = io.connect({
+        query: `room=${JSON.stringify(room)}&user=User${(
+          Math.random() * 100
+        ).toFixed(0)}`,
+      })
 
       const form = document.getElementById("form")
       const input = document.getElementById("input")
